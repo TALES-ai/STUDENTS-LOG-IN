@@ -22,6 +22,7 @@
       color: #333;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
     .container {
       flex: 1;
@@ -34,256 +35,260 @@
       color: #004d40;
       padding: 12px 16px;
       text-align: center;
-      font-size: 20px;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      position: fixed;
+      font-size: 22px;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      position: sticky;
       top: 0;
       width: 100%;
       z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .header h1 {
-      font-size: 20px;
+      font-size: 22px;
       margin: 0;
     }
-    .nav-bar {
-      background: #fff;
-      padding: 10px 8px;
-      position: fixed;
-      top: 60px;
-      width: 100%;
-      z-index: 900;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .nav-bar a {
+    .menu-toggle {
+      background: none;
+      border: none;
       color: #004d40;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 6px;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 8px;
       transition: transform 0.3s ease;
-      background: #e0e0e0;
+    }
+    .menu-toggle:hover {
+      transform: scale(1.2);
+    }
+    .menu-content {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 16px;
+      background: #ffd700;
       border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 200px;
+      z-index: 1000;
+      animation: slideDown 0.3s ease-out;
     }
-    .nav-bar a i {
-      font-size: 18px;
-      margin-bottom: 2px;
+    .menu-content.active {
+      display: block;
     }
-    .nav-bar a:hover {
-      transform: scale(1.05);
+    .menu-content a, .menu-content button {
+      color: #004d40;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .menu-content a:hover, .menu-content button:hover {
       background: #ffca28;
     }
     .main-content {
       flex: 1;
-      padding: 120px 12px 80px;
+      padding: 80px 16px 90px;
       overflow-y: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 12px;
-    }
-    .dashboard-card {
-      background: #fff;
-      padding: 16px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      border-left: 3px solid #ff7043;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 180px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .dashboard-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .dashboard-card h1 {
-      font-size: 18px;
-      color: #00695c;
-      margin-bottom: 10px;
-      font-weight: 600;
-      border-bottom: 2px solid #ffca28;
-      padding-bottom: 6px;
-    }
-    .dashboard-card p {
-      font-size: 13px;
-      color: #555;
+      transition: padding-left 0.3s ease;
     }
     .quote {
-      grid-column: 1 / -1;
       background: #e6f3f2;
-      padding: 12px;
-      border-radius: 8px;
+      padding: 16px;
+      border-radius: 10px;
+      margin: 16px;
       text-align: center;
       font-style: italic;
       color: #00695c;
-      border-left: 3px solid #ffca28;
-      font-size: 14px;
-      margin: 12px 0;
+      border-left: 4px solid #ffd700;
+      font-size: 16px;
+      animation: fadeIn 0.5s ease-in;
     }
     .section {
       display: none;
-      background: #fff;
-      padding: 16px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      margin: 12px 0;
-      border-left: 3px solid #ff7043;
+      background: linear-gradient(135deg, #ffffff, #f9f9f9);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 16px;
+      border-left: 4px solid #ff7043;
       animation: fadeIn 0.5s ease-in;
+      max-height: calc(100vh - 170px);
+      overflow-y: auto;
+      transition: transform 0.3s ease;
     }
     .section.active {
       display: block;
-      grid-column: 1 / -1;
+    }
+    .section:hover {
+      transform: translateY(-5px);
+    }
+    h1 {
+      font-size: 26px;
+      color: #00695c;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-bottom: 3px solid #ffd700;
+      padding-bottom: 10px;
     }
     h2 {
       color: #ff7043;
-      font-size: 16px;
-      margin-bottom: 10px;
+      font-size: 18px;
+      margin-bottom: 12px;
       font-weight: 600;
     }
     .card {
       background: #fff;
-      padding: 16px;
-      border-radius: 10px;
-      margin-bottom: 12px;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 16px;
       border: 1px solid #e0e0e0;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 13px;
+      margin-top: 12px;
+      font-size: 15px;
       overflow-x: auto;
       display: block;
     }
     th, td {
       border: 1px solid #d1d9e0;
-      padding: 8px;
+      padding: 12px;
       text-align: left;
     }
     th {
-      background: #ffca28;
+      background: #ffd700;
       color: #004d40;
-      font-weight: 600;
+      font-weight: 700;
     }
     tr:nth-child(even) {
       background: #f5f7fa;
     }
     .fees-highlight {
-      font-weight: 600;
+      font-weight: 700;
       color: #004d40;
       background: #fff3e0;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
       display: inline-block;
     }
     .announcement-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 12px;
+      gap: 16px;
+      margin-top: 16px;
     }
     .announcement-card {
       background: #fff3e0;
-      padding: 12px;
-      border-radius: 10px;
-      border-left: 3px solid #ff7043;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #ff7043;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .announcement-card.unread {
       background: #ffe0b2;
       font-weight: 500;
-      box-shadow: 0 2px 6px rgba(255, 112, 67, 0.1);
+      box-shadow: 0 4px 12px rgba(255, 112, 67, 0.2);
     }
     .announcement-card.read {
       background: #fff3e0;
     }
     .announcement-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
     .announcement-card h4 {
-      margin: 0 0 10px;
+      margin: 0 0 12px;
       color: #00695c;
-      font-size: 16px;
+      font-size: 18px;
     }
     .announcement-card p {
-      margin: 6px 0;
-      font-size: 13px;
+      margin: 8px 0;
+      font-size: 15px;
     }
     .announcement-card .mark-read {
       background: #ff7043;
       color: #fff;
       border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 500;
-      transition: background 0.3s ease, transform 0.3s ease;
-      margin-top: 10px;
-    }
-    .announcement-card .mark-read:hover {
-      background: #f4511e;
-      transform: scale(1.05);
-    }
-    button {
       padding: 10px 20px;
-      background: linear-gradient(135deg, #ffca28, #ffd700);
-      color: #004d40;
-      border: none;
       border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-top: 12px;
+    }
+    .announcement-card .mark-read:hover {
+      background: #f4511e;
+      transform: scale(1.1);
+    }
+    button {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #ffd700, #ffca28);
+      color: #004d40;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
     button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     }
     .error-message {
       color: #d32f2f;
-      font-size: 13px;
-      margin: 12px;
-      padding: 10px;
+      font-size: 15px;
+      margin: 16px;
+      padding: 12px;
       background: #ffebee;
       border-radius: 6px;
       text-align: center;
+      animation: fadeIn 0.5s ease-in;
     }
     .payment-center {
       text-align: center;
-      padding: 16px;
+      padding: 20px;
       background: #fffde7;
-      border-radius: 10px;
-      border: 1px dashed #ffca28;
-      margin-bottom: 12px;
+      border-radius: 12px;
+      border: 2px dashed #ffca28;
+      margin-bottom: 16px;
+      transition: transform 0.3s ease;
+    }
+    .payment-center:hover {
+      transform: translateY(-5px);
     }
     .payment-center h1 {
-      font-size: 18px;
+      font-size: 24px;
       color: #ff7043;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .payment-assurance {
       list-style: none;
       padding: 0;
-      margin: 12px 0;
+      margin: 16px 0;
     }
     .payment-assurance li {
-      margin: 8px 0;
-      font-size: 13px;
+      margin: 12px 0;
+      font-size: 16px;
       color: #00695c;
       display: flex;
       align-items: center;
@@ -291,47 +296,75 @@
     }
     .payment-assurance li i {
       color: #4caf50;
-      margin-right: 8px;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+    .online-dot {
+      width: 10px;
+      height: 10px;
+      background: #00ff00;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 8px;
+      box-shadow: 0 0 8px #00ff00;
+      animation: pulse 1.5s infinite;
+    }
+    .profile-info p {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
       font-size: 16px;
+    }
+    .profile-info i {
+      margin-right: 10px;
+      color: #ff7043;
+      font-size: 18px;
     }
     .progress-bar {
       width: 100%;
       background-color: #e0e0e0;
-      border-radius: 6px;
-      margin: 12px 0;
+      border-radius: 8px;
+      margin: 16px 0;
       overflow: hidden;
     }
     .progress {
-      height: 18px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, #ffca28, #ffd700);
+      height: 24px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ffd700, #ffca28);
       text-align: center;
       color: #004d40;
-      line-height: 18px;
-      font-size: 11px;
-      font-weight: 500;
+      line-height: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: width 0.5s ease;
     }
     .term-select {
-      margin: 12px 0;
-      padding: 8px;
-      font-size: 13px;
-      border-radius: 6px;
+      margin: 16px 0;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
       border: 1px solid #d1d9e0;
       width: 100%;
-      max-width: 200px;
+      max-width: 300px;
+      transition: border-color 0.3s ease;
+    }
+    .term-select:focus {
+      border-color: #ff7043;
+      outline: none;
     }
     .announcements-nav {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       display: flex;
-      gap: 8px;
+      gap: 12px;
       flex-wrap: wrap;
     }
     .announcements-nav button {
-      background: #e0e0e0;
-      padding: 6px 12px;
-      font-size: 12px;
-      border-radius: 6px;
+      background: #ffd700;
+      padding: 10px 20px;
+      font-size: 15px;
+      border-radius: 8px;
       color: #004d40;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
     .announcements-nav button.active {
       background: #ff7043;
@@ -346,50 +379,53 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: #fff;
-      padding: 8px 0;
-      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+      background: #ffd700;
+      padding: 12px 0;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
       z-index: 1000;
-      flex-wrap: wrap;
-      gap: 5px;
+      transition: transform 0.3s ease;
+    }
+    .bottom-nav.active {
+      transform: translateY(0);
     }
     .bottom-nav .nav-items {
       display: flex;
       justify-content: space-around;
       align-items: center;
     }
-    .bottom-nav a {
+    .bottom-nav a, .bottom-nav button {
       color: #004d40;
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 500;
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
       text-align: center;
-      padding: 4px;
-      background: #e0e0e0;
-      border-radius: 6px;
+      padding: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
-    .bottom-nav a i {
+    .bottom-nav a:hover, .bottom-nav button:hover {
+      transform: scale(1.1);
+      color: #ff7043;
+    }
+    .bottom-nav i {
       display: block;
-      font-size: 16px;
-      margin-bottom: 2px;
-    }
-    .bottom-nav a:hover {
-      transform: scale(1.05);
-      background: #ffca28;
+      font-size: 24px;
+      margin-bottom: 4px;
     }
     footer {
       background: #004d40;
       color: #fff;
       text-align: center;
-      padding: 10px 0;
-      font-size: 12px;
+      padding: 12px 0;
+      font-size: 14px;
       z-index: 999;
     }
     footer p {
-      margin: 3px 0;
+      margin: 4px 0;
     }
     footer a {
-      color: #ffca28;
+      color: #ffd700;
       text-decoration: none;
     }
     footer a:hover {
@@ -397,77 +433,157 @@
     }
     .helb-card {
       background: #e6f3f2;
-      padding: 16px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      border-left: 3px solid #ffca28;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      border-left: 4px solid #ffd700;
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .helb-card:hover {
+      transform: translateY(-5px);
     }
     .coming-soon {
       background: #fffde7;
-      padding: 16px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      border: 1px dashed #ffca28;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      border: 2px dashed #ffd700;
       text-align: center;
       color: #ff7043;
       font-style: italic;
-      font-size: 14px;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+    .coming-soon:hover {
+      transform: translateY(-5px);
     }
     .fees-world {
-      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffca28" fill-opacity="0.1" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,90.7C960,96,1056,96,1152,85.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E'), #fff;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffd700" fill-opacity="0.2" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,90.7C960,96,1056,96,1152,85.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E'), #fff;
       background-size: cover;
-      padding: 16px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      border: 1px solid #ffca28;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 16px;
+      border: 2px solid #ffd700;
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .fees-world:hover {
+      transform: translateY(-5px);
     }
     .fees-world h2 {
       color: #004d40;
-      font-size: 16px;
+      font-size: 20px;
+    }
+    .loader {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #ff7043;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      z-index: 2000;
+    }
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 5px #00ff00; }
+      50% { transform: scale(1.2); box-shadow: 0 0 12px #00ff00; }
+      100% { transform: scale(1); box-shadow: 0 0 5px #00ff00; }
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     @media (max-width: 768px) {
       .main-content {
-        padding: 110px 8px 70px;
-        grid-template-columns: 1fr;
+        padding: 80px 12px 90px;
+        margin: 0;
       }
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        padding: 8px 0;
-        gap: 5px;
-      }
-      .nav-bar a {
-        width: 45%;
-        text-align: center;
-      }
-      .header h1 {
-        font-size: 18px;
-      }
-      .dashboard-card {
-        height: 150px;
-      }
-      .dashboard-card h1 {
-        font-size: 16px;
-      }
-      .dashboard-card p {
-        font-size: 12px;
+      .sidebar {
+        display: none;
       }
       .bottom-nav {
-        display: flex;
+        display: block;
+        transform: translateY(100%);
       }
-      .bottom-nav a {
-        width: 45%;
+      .bottom-nav.active {
+        transform: translateY(0);
+      }
+      .section {
+        margin: 12px;
+        padding: 16px;
+      }
+      table {
+        font-size: 14px;
+      }
+      th, td {
+        padding: 10px;
+      }
+      .header h1 {
+        font-size: 20px;
+      }
+      .menu-content {
+        right: 12px;
+        width: 180px;
+      }
+      .menu-content a, .menu-content button {
+        font-size: 15px;
+        padding: 10px 16px;
       }
     }
     @media (min-width: 769px) {
-      .bottom-nav {
-        display: none;
+      .sidebar {
+        display: block;
+        width: 250px;
+        height: calc(100vh - 60px);
+        position: fixed;
+        top: 60px;
+        left: 0;
+        background: linear-gradient(to bottom, #ffd700, #ffca28);
+        padding: 20px 0;
+        z-index: 900;
+        transition: transform 0.3s ease;
+      }
+      .sidebar .profile {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .sidebar .profile img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid #004d40;
+        transition: transform 0.3s ease;
+      }
+      .sidebar .profile img:hover {
+        transform: scale(1.1);
+      }
+      .sidebar .profile p {
+        color: #004d40;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 8px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .main-content {
+        margin-left: 250px;
+      }
+      .announcement-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       }
     }
   </style>
@@ -476,44 +592,27 @@
   <div class="container">
     <div class="header">
       <h1>Borabu TTC Student Portal</h1>
+      <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+      <div class="menu-content" id="menuContent">
+        <a href="#" onclick="showSection('profile', hideMenu())">Profile</a>
+        <a href="#" onclick="showSection('marks', hideMenu())">Academics</a>
+        <a href="#" onclick="showSection('fees', hideMenu())">Fees</a>
+        <a href="#" onclick="showSection('payFees', hideMenu())">Pay Fees</a>
+        <a href="#" onclick="showSection('announcements', hideMenu())">Announcements</a>
+        <a href="#" onclick="showSection('timetables', hideMenu())">Timetables</a>
+        <button onclick="logout()">Logout</button>
+      </div>
     </div>
-    <div class="nav-bar">
-      <a href="#" onclick="showSection('profile')"><i class="fas fa-user"></i> Profile</a>
-      <a href="#" onclick="showSection('marks')"><i class="fas fa-book"></i> Academics</a>
-      <a href="#" onclick="showSection('fees')"><i class="fas fa-money-bill"></i> Fees</a>
-      <a href="#" onclick="showSection('payFees')"><i class="fas fa-credit-card"></i> Pay Fees</a>
-      <a href="#" onclick="showSection('announcements')"><i class="fas fa-bullhorn"></i> Announcements</a>
-      <a href="#" onclick="showSection('timetables')"><i class="fas fa-calendar"></i> Timetables</a>
-      <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <div class="sidebar">
+      <div class="profile">
+        <img src="https://img.icons8.com/color/80/000000/student-male.png" alt="Student Icon">
+        <p id="studentName"></p><span class="online-dot"></span>
+      </div>
     </div>
     <div class="main-content">
       <div class="quote">
         <h2>Daily Quote</h2>
         <p id="dailyQuote">"Education is the key to unlocking the world, a passport to freedom." - Finley Onchiri</p>
-      </div>
-      <div class="dashboard-card" onclick="showSection('profile')">
-        <h1>Profile</h1>
-        <p>View your personal details and HELB options.</p>
-      </div>
-      <div class="dashboard-card" onclick="showSection('marks')">
-        <h1>Academics</h1>
-        <p>Check your marks and download reports.</p>
-      </div>
-      <div class="dashboard-card" onclick="showSection('fees')">
-        <h1>Fees</h1>
-        <p>Monitor your fee status and transactions.</p>
-      </div>
-      <div class="dashboard-card" onclick="showSection('payFees')">
-        <h1>Pay Fees</h1>
-        <p>Make secure payments online.</p>
-      </div>
-      <div class="dashboard-card" onclick="showSection('announcements')">
-        <h1>Announcements</h1>
-        <p>Stay updated with the latest news.</p>
-      </div>
-      <div class="dashboard-card" onclick="showSection('timetables')">
-        <h1>Timetables</h1>
-        <p>Coming soon—your schedule awaits!</p>
       </div>
       <div id="profile" class="section active">
         <h1>Profile</h1>
@@ -523,6 +622,7 @@
           <p><i class="fas fa-calendar"></i> Year: <strong id="year">N/A</strong></p>
           <p><i class="fas fa-stream"></i> Stream: <strong id="stream">N/A</strong></p>
           <p><i class="fas fa-venus-mars"></i> Gender: <strong id="gender">N/A</strong></p>
+          <p><i class="fas fa-hand-holding-usd"></i> Sponsor: <strong id="sponsor">N/A</strong></p>
           <p><i class="fas fa-users"></i> Parent Name: <strong id="parentName">N/A</strong></p>
           <p><i class="fas fa-phone"></i> Parent Phone: <strong id="parentPhone">N/A</strong></p>
           <div class="progress-bar">
@@ -534,7 +634,7 @@
           <p><i class="fas fa-graduation-cap"></i> Secure financial support for your education through the Higher Education Loans Board (HELB).</p>
           <button onclick="window.open('https://www.helb.co.ke/', '_blank')"><i class="fas fa-external-link-alt"></i> Apply</button>
         </div>
-        <p><strong>Explanation:</strong> View your personal details, including admission number, name, year, stream, gender, and parent contact information. The HELB section provides loans to cover tuition and living expenses, repayable after graduation with flexible terms.</p>
+        <p><strong>Explanation:</strong> Dive into your personal details here—track your progress with the graduation bar, manage sponsorship, and explore HELB for financial aid to keep your studies on track.</p>
       </div>
       <div id="marks" class="section">
         <h1>Academics</h1>
@@ -558,7 +658,7 @@
           </table>
         </div>
         <button onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> Download PDF</button>
-        <p><strong>Explanation:</strong> Check your academic performance with CAT and exam scores across terms and subjects, with downloadable PDFs for tracking.</p>
+        <p><strong>Explanation:</strong> Monitor your academic journey with detailed scores and grades, downloadable as a PDF to share with mentors or guardians.</p>
       </div>
       <div id="fees" class="section">
         <h1>Fees</h1>
@@ -582,7 +682,7 @@
           </table>
           <button onclick="downloadFeePDF()"><i class="fas fa-file-pdf"></i> Download Fee PDF</button>
         </div>
-        <p><strong>Explanation:</strong> Monitor your fee status, including total, paid, balance, and transaction history, with a downloadable PDF.</p>
+        <p><strong>Explanation:</strong> Navigate your financial landscape with a stylish overview of fees, payments, and transactions—perfect for staying ahead!</p>
       </div>
       <div id="payFees" class="section">
         <h1>Pay Fees</h1>
@@ -597,9 +697,9 @@
             <li><i class="fas fa-headset"></i> 24/7 Support</li>
           </ul>
           <button onclick="window.open('https://payment.intasend.com/pay/b90e1c19-33da-4b7d-a654-c4fb72eb9ea7/', '_blank')"><i class="fas fa-credit-card"></i> Pay Now</button>
-          <p>After payment, contact the Accounts Office to confirm receipt. Visit for assistance if needed.</p>
+          <p>After payment, please contact the Accounts Office to confirm receipt. For issues, visit the office for assistance.</p>
         </div>
-        <p><strong>Explanation:</strong> Access a secure payment portal with support for any issues.</p>
+        <p><strong>Explanation:</strong> Pay with peace of mind using our secure portal, backed by top-notch support to resolve any hiccups.</p>
       </div>
       <div id="announcements" class="section">
         <h1>Announcements</h1>
@@ -610,14 +710,14 @@
         <div class="card">
           <div class="announcement-grid" id="announcementsContainer"></div>
         </div>
-        <p><strong>Explanation:</strong> Stay updated with the latest news and messages.</p>
+        <p><strong>Explanation:</strong> Keep up with the latest news and personal updates—interactive cards make it easy to stay informed.</p>
       </div>
       <div id="timetables" class="section">
         <h1>Timetables</h1>
         <div class="coming-soon">
           <p><i class="fas fa-clock"></i> Coming Soon! Get ready for your schedule updates!</p>
         </div>
-        <p><strong>Explanation:</strong> A new section for timetables is coming soon.</p>
+        <p><strong>Explanation:</strong> Soon, plan your day with a sleek timetable view—watch this space for exciting updates!</p>
       </div>
     </div>
     <div class="bottom-nav">
@@ -628,11 +728,11 @@
         <a href="#" onclick="showSection('payFees')"><i class="fas fa-credit-card"></i> Pay</a>
         <a href="#" onclick="showSection('announcements')"><i class="fas fa-bullhorn"></i> News</a>
         <a href="#" onclick="showSection('timetables')"><i class="fas fa-calendar"></i> Timetables</a>
-        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </div>
     </div>
   </div>
   <div id="errorMessage" class="error-message"></div>
+  <div class="loader" id="loader"></div>
   <footer>
     <p>Contact: <a href="mailto:info@borabuttc.ac.ke">info@borabuttc.ac.ke</a> | Phone: +254 712 345 678</p>
     <p>© 2025 Borabu Teachers Training College. All rights reserved.</p>
@@ -652,9 +752,14 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    function showSection(section) {
+    let currentSection = 'profile';
+
+    function showSection(section, callback) {
       document.querySelectorAll(".section").forEach(div => div.classList.remove("active"));
       document.getElementById(section).classList.add("active");
+      currentSection = section;
+      if (callback) callback();
+      updateBottomNav();
     }
 
     function showError(message) {
@@ -662,7 +767,6 @@
       errorDiv.textContent = message;
       errorDiv.style.display = "block";
       setTimeout(() => { errorDiv.style.display = "none"; }, 5000);
-      console.error(message);
     }
 
     function getUserNameByEmail(email, role) {
@@ -677,6 +781,16 @@
       }).catch(() => email.replace(".stacc@moke.ac", ""));
     }
 
+    function toggleMenu() {
+      const menuContent = document.getElementById("menuContent");
+      menuContent.classList.toggle("active");
+    }
+
+    function hideMenu() {
+      const menuContent = document.getElementById("menuContent");
+      menuContent.classList.remove("active");
+    }
+
     function logout() {
       localStorage.clear();
       console.log("Logged out, redirecting to index.html");
@@ -684,14 +798,13 @@
     }
 
     function updateMarks() {
+      const loader = document.getElementById("loader");
+      loader.style.display = "block";
       const term = document.getElementById("termSelect").value;
-      const regNo = localStorage.getItem("regNo")?.replace(/\//g, "_");
-      if (!regNo) {
-        showError("No registration number found in localStorage.");
-        return;
-      }
+      const regNo = localStorage.getItem("regNo").replace(/\//g, "_");
       const studentRef = db.ref("users/students/" + regNo);
       studentRef.once("value", (snapshot) => {
+        loader.style.display = "none";
         if (snapshot.exists()) {
           const data = snapshot.val();
           const marksBody = document.getElementById("marksBody");
@@ -716,14 +829,17 @@
             marksBody.innerHTML = "<tr><td colspan='5'>No marks available for this term</td></tr>";
           }
         } else {
-          showError("Student data not found for regNo: " + regNo);
+          showError("Student data not found.");
         }
       }).catch((error) => {
+        loader.style.display = "none";
         showError("Failed to update marks: " + error.message);
       });
     }
 
     function downloadPDF() {
+      const loader = document.getElementById("loader");
+      loader.style.display = "block";
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
       const name = document.getElementById("name").textContent;
@@ -762,7 +878,7 @@
           body: rows,
           theme: 'grid',
           styles: { cellPadding: 3, fontSize: 10, lineColor: [0, 0, 0], lineWidth: 0.1 },
-          headStyles: { fillColor: [255, 202, 40], textColor: [0, 77, 64], fontStyle: 'bold' },
+          headStyles: { fillColor: [255, 215, 0], textColor: [0, 77, 64], fontStyle: 'bold' },
           bodyStyles: { alternateRowStyles: { fillColor: [245, 247, 250] } },
         });
       } else {
@@ -774,9 +890,12 @@
       doc.text("Assistant: Mrs. Mojo", 120, 280);
 
       doc.save(`${name.replace(/ /g, "_")}_Report.pdf`);
+      loader.style.display = "none";
     }
 
     function downloadFeePDF() {
+      const loader = document.getElementById("loader");
+      loader.style.display = "block";
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
       const name = document.getElementById("name").textContent;
@@ -818,7 +937,7 @@
           body: rows,
           theme: 'grid',
           styles: { cellPadding: 3, fontSize: 10, lineColor: [0, 0, 0], lineWidth: 0.1 },
-          headStyles: { fillColor: [255, 202, 40], textColor: [0, 77, 64], fontStyle: 'bold' },
+          headStyles: { fillColor: [255, 215, 0], textColor: [0, 77, 64], fontStyle: 'bold' },
           bodyStyles: { alternateRowStyles: { fillColor: [245, 247, 250] } },
         });
       } else {
@@ -830,25 +949,30 @@
       doc.text("Contact: +254 712 345 678", 120, 280);
 
       doc.save(`${name.replace(/ /g, "_")}_Fee_Report.pdf`);
+      loader.style.display = "none";
     }
 
     window.onload = function() {
       const userType = localStorage.getItem("userType");
       const regNo = localStorage.getItem("regNo");
       const studentName = localStorage.getItem("studentName");
-      console.log("Student.html loaded, localStorage:", { userType, regNo, studentName });
+      console.log("Student.html loaded, localStorage:", userType, regNo, studentName);
 
-      if (!userType || userType !== "student" || !regNo) {
-        showError("Invalid session or missing registration number. Redirecting...");
+      if (userType !== "student" || !regNo) {
+        console.log("Redirecting to index.html: Invalid session");
         localStorage.clear();
         setTimeout(() => window.location.href = "index.html", 100);
         return;
       }
 
+      document.getElementById("studentName").textContent = studentName || "Student";
       document.getElementById("regNo").textContent = regNo.replace(/_/g, "/");
 
+      const loader = document.getElementById("loader");
+      loader.style.display = "block";
       const studentRef = db.ref("users/students/" + regNo.replace(/\//g, "_"));
       studentRef.once("value", (snapshot) => {
+        loader.style.display = "none";
         if (snapshot.exists()) {
           const data = snapshot.val();
           const profile = data.profile || {};
@@ -860,6 +984,7 @@
           document.getElementById("progressBar").textContent = progress + "% Graduation Tracker";
           document.getElementById("stream").textContent = profile.stream || data.stream || "N/A";
           document.getElementById("gender").textContent = profile.gender || data.gender || "N/A";
+          document.getElementById("sponsor").textContent = profile.sponsor || data.sponsor || "N/A";
           document.getElementById("parentName").textContent = profile.parentName || data.parentName || "N/A";
           document.getElementById("parentPhone").textContent = profile.parentPhone || data.parentPhone || "N/A";
 
@@ -867,7 +992,9 @@
           marksBody.innerHTML = "";
           const term = document.getElementById("termSelect").value;
           const termData = data.marks?.[term] || data.academics?.[term];
+          let hasMarks = false;
           if (termData) {
+            hasMarks = true;
             for (const [subject, catScore] of Object.entries(termData.cat || {})) {
               const examScore = termData.exam?.[subject] || (termData[subject] || "-");
               const grade = termData.grades?.[subject] || termData.grades?.[subject.toLowerCase()] || "-";
@@ -879,7 +1006,8 @@
                 <td>${grade}</td>
               </tr>`;
             }
-          } else {
+          }
+          if (!hasMarks) {
             marksBody.innerHTML = "<tr><td colspan='5'>No marks available for this term</td></tr>";
           }
 
@@ -926,11 +1054,12 @@
             });
           }
         } else {
-          showError("Student data not found for regNo: " + regNo);
+          showError("Student data not found.");
           localStorage.clear();
           setTimeout(() => window.location.href = "index.html", 100);
         }
       }).catch((error) => {
+        loader.style.display = "none";
         showError("Failed to load data: " + error.message);
         console.log("Error loading student data:", error);
         localStorage.clear();
@@ -942,7 +1071,7 @@
       const announcementsContainer = document.getElementById("announcementsContainer");
 
       function updateAnnouncements(type) {
-        announcementsContainer.innerHTML = "<p><i class='fas fa-spinner fa-spin'></i> Loading announcements...</p>";
+        announcementsContainer.innerHTML = "<div class='loader' style='display: inline-block; width: 30px; height: 30px;'></div> Loading announcements...";
         const isIndividual = type === "individual";
         const snapRef = isIndividual ? announcementsRef.child("individual").child(normalizedRegNo) : announcementsRef.child("general");
         snapRef.once("value", (snapshot) => {
@@ -1026,6 +1155,26 @@
         }
         updateAnnouncements(type);
       };
+
+      function updateBottomNav() {
+        const bottomNav = document.querySelector('.bottom-nav');
+        if (window.innerWidth <= 768) {
+          bottomNav.classList.add('active');
+        }
+      }
+      updateBottomNav();
+      window.addEventListener('resize', updateBottomNav);
+
+      const quotes = [
+        '"Education is the key to unlocking the world, a passport to freedom." - Finley Onchiri',
+        '"The future belongs to those who believe in the beauty of their dreams." - Eleanor Roosevelt',
+        '"Learn as if you will live forever, live as if you will die tomorrow." - Mahatma Gandhi'
+      ];
+      let quoteIndex = 0;
+      setInterval(() => {
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+        document.getElementById("dailyQuote").textContent = quotes[quoteIndex];
+      }, 5000);
     };
   </script>
 </body>
