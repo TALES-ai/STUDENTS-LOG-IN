@@ -19,7 +19,7 @@
       justify-content: space-between;
       align-items: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #e0f7fa, #f8e1e1);
+      background: linear-gradient(135deg, #26a69a, #ff6f61);
       color: #2d2d2d;
     }
     .login-container {
@@ -33,19 +33,18 @@
       margin: 1rem;
       animation: fadeIn 0.5s ease-in;
     }
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1rem;
-      display: block;
-    }
     .login-container h1 {
       font-size: 2rem;
-      color: #00695c;
+      color: #26a69a;
       margin-bottom: 1.5rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+    .login-container p.welcome {
+      font-size: 1.1rem;
+      color: #757575;
+      margin-bottom: 1rem;
     }
     .login-container input {
       width: 100%;
@@ -58,8 +57,8 @@
       transition: border-color 0.3s, box-shadow 0.3s;
     }
     .login-container input:focus {
-      border-color: #00695c;
-      box-shadow: 0 0 5px rgba(0, 105, 92, 0.3);
+      border-color: #26a69a;
+      box-shadow: 0 0 5px rgba(38, 166, 154, 0.3);
       outline: none;
     }
     .login-container input.error {
@@ -68,7 +67,7 @@
     .login-container button {
       width: 100%;
       padding: 0.8rem;
-      background: linear-gradient(to right, #00695c, #ff7043);
+      background: linear-gradient(to right, #26a69a, #ff6f61);
       color: #fff;
       border: none;
       border-radius: 6px;
@@ -82,11 +81,14 @@
       transform: scale(1.05);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
-    .explanation {
+    .tips {
       font-size: 0.9rem;
       color: #2d2d2d;
       margin: 1rem 0;
       line-height: 1.5;
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 6px;
     }
     .dropdown {
       position: relative;
@@ -95,13 +97,13 @@
     }
     .dropdown-toggle {
       font-size: 0.9rem;
-      color: #00695c;
+      color: #26a69a;
       cursor: pointer;
       text-decoration: underline;
       transition: color 0.3s ease;
     }
     .dropdown-toggle:hover {
-      color: #ff7043;
+      color: #ff6f61;
     }
     .dropdown-content {
       display: none;
@@ -139,7 +141,7 @@
       color: #d32f2f;
     }
     footer {
-      background: #00695c;
+      background: #26a69a;
       color: #fff;
       text-align: center;
       padding: 0.5rem;
@@ -171,15 +173,14 @@
       .login-container h1 {
         font-size: 1.5rem;
       }
-      .logo {
-        width: 60px;
-        height: 60px;
+      .login-container p.welcome, .tips {
+        font-size: 0.9rem;
       }
       .login-container input, .login-container button {
         font-size: 0.9rem;
         padding: 0.7rem;
       }
-      .explanation, .dropdown-toggle, .dropdown-content p {
+      .dropdown-toggle, .dropdown-content p {
         font-size: 0.8rem;
       }
       footer {
@@ -194,9 +195,8 @@
       .login-container h1 {
         font-size: 1.2rem;
       }
-      .logo {
-        width: 50px;
-        height: 50px;
+      .login-container p.welcome, .tips {
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -205,10 +205,16 @@
   <div class="login-container" role="main">
     <img src="https://img.icons8.com/color/80/000000/school.png" alt="Borabu TTC Logo" class="logo">
     <h1>Borabu Students Log In</h1>
+    <p class="welcome">Welcome to your student portal! Access your academic journey with ease.</p>
     <input type="text" id="regNo" placeholder="Admission Number (e.g., AID/00118/024)" aria-label="Admission Number" required>
     <input type="password" id="password" placeholder="Password" aria-label="Password" required>
     <button onclick="login()">Log In</button>
-    <p class="explanation">This portal is exclusively for Borabu TTC student login.</p>
+    <div class="tips">
+      <strong>Tips for Students:</strong><br>
+      - Keep your admission number handy.<br>
+      - Contact support if you forget your password.<br>
+      - Check announcements regularly for updates!
+    </div>
     <div class="dropdown">
       <span class="dropdown-toggle" onclick="toggleDropdown()">Forgot Password?</span>
       <div class="dropdown-content" id="dropdownContent">
@@ -297,7 +303,6 @@
         });
     }
 
-    // Close dropdown when clicking outside
     document.addEventListener("click", (event) => {
       const dropdown = document.querySelector(".dropdown");
       if (!dropdown.contains(event.target)) {
@@ -305,7 +310,6 @@
       }
     });
 
-    // Handle Enter key for login
     document.getElementById("password").addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
         login();
