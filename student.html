@@ -16,61 +16,62 @@
       padding: 0;
     }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #f4f7fa;
+      font-family: 'Arial, sans-serif';
+      background: #f0f4f8;
       min-height: 100vh;
-      color: #333;
+      color: #2c3e50;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
     }
     .container {
       flex: 1;
+      max-width: 1400px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
     .header {
-      background: linear-gradient(135deg, #ffd700, #ffca28);
-      color: #004d40;
-      padding: 12px 16px;
+      background: #000000;
+      color: #ffffff;
+      padding: 16px 24px;
       text-align: center;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       position: sticky;
       top: 0;
-      width: 100%;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .header h1 {
-      font-size: 22px;
+      font-size: 24px;
       margin: 0;
     }
     .menu-toggle {
       background: none;
       border: none;
-      color: #004d40;
-      font-size: 26px;
+      color: #ffffff;
+      font-size: 28px;
       cursor: pointer;
       padding: 8px;
       transition: transform 0.3s ease;
     }
     .menu-toggle:hover {
-      transform: scale(1.2);
+      transform: scale(1.15);
     }
     .menu-content {
       display: none;
       position: absolute;
-      top: 50px;
-      right: 16px;
-      background: #ffd700;
+      top: 60px;
+      right: 24px;
+      background: #2980b9;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      width: 200px;
+      width: 220px;
       z-index: 1000;
       animation: slideDown 0.3s ease-out;
     }
@@ -78,7 +79,7 @@
       display: block;
     }
     .menu-content a, .menu-content button {
-      color: #004d40;
+      color: #ffffff;
       padding: 12px 20px;
       text-decoration: none;
       display: block;
@@ -91,71 +92,108 @@
       transition: background 0.3s ease;
     }
     .menu-content a:hover, .menu-content button:hover {
-      background: #ffca28;
+      background: #1abc9c;
     }
     .main-content {
       flex: 1;
-      padding: 80px 16px 90px;
+      padding: 24px;
       overflow-y: auto;
-      transition: padding-left 0.3s ease;
     }
-    .quote {
-      background: #e6f3f2;
-      padding: 16px;
-      border-radius: 10px;
-      margin: 16px;
-      text-align: center;
-      font-style: italic;
-      color: #00695c;
-      border-left: 4px solid #ffd700;
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 24px auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .slider img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: none;
+      transition: opacity 0.5s ease;
+    }
+    .slider img.active {
+      display: block;
+      opacity: 1;
+    }
+    .slider .slider-text {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 15px;
+      border-radius: 5px;
       font-size: 16px;
-      animation: fadeIn 0.5s ease-in;
+    }
+    .fees-overview {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .fees-overview div {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .fees-overview div#billed {
+      background: #3498db;
+      color: #ffffff;
+    }
+    .fees-overview div#billed i {
+      color: #ffffff;
+    }
+    .fees-overview div#paid {
+      background: #1abc9c;
+      color: #ffffff;
+    }
+    .fees-overview div#paid i {
+      color: #ffffff;
+    }
+    .fees-overview div#balance {
+      background: #e74c3c;
+      color: #ffffff;
+    }
+    .fees-overview div#balance i {
+      color: #ffffff;
     }
     .section {
       display: none;
-      background: linear-gradient(135deg, #ffffff, #f9f9f9);
-      padding: 20px;
+      background: #ffffff;
+      padding: 24px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin: 16px;
-      border-left: 4px solid #ff7043;
+      margin-bottom: 24px;
       animation: fadeIn 0.5s ease-in;
-      max-height: calc(100vh - 170px);
-      overflow-y: auto;
-      transition: transform 0.3s ease;
     }
     .section.active {
       display: block;
     }
-    .section:hover {
-      transform: translateY(-5px);
-    }
     h1 {
-      font-size: 26px;
-      color: #00695c;
+      font-size: 28px;
+      color: #3498db;
       margin-bottom: 16px;
       font-weight: 700;
-      border-bottom: 3px solid #ffd700;
+      border-bottom: 3px solid #1abc9c;
       padding-bottom: 10px;
     }
     h2 {
-      color: #ff7043;
-      font-size: 18px;
+      color: #e74c3c;
+      font-size: 20px;
       margin-bottom: 12px;
       font-weight: 600;
-    }
-    .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
     table {
       width: 100%;
@@ -166,119 +204,101 @@
       display: block;
     }
     th, td {
-      border: 1px solid #d1d9e0;
+      border: 1px solid #dfe6e9;
       padding: 12px;
       text-align: left;
     }
     th {
-      background: #ffd700;
-      color: #004d40;
+      background: #3498db;
+      color: #ffffff;
       font-weight: 700;
     }
     tr:nth-child(even) {
-      background: #f5f7fa;
-    }
-    .fees-highlight {
-      font-weight: 700;
-      color: #004d40;
-      background: #fff3e0;
-      padding: 8px 16px;
-      border-radius: 8px;
-      display: inline-block;
+      background: #ecf0f1;
     }
     .announcement-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 16px;
       margin-top: 16px;
     }
-    .announcement-card {
-      background: #fff3e0;
+    .announcement {
+      background: #fef9e7;
       padding: 20px;
       border-radius: 12px;
-      border-left: 4px solid #ff7043;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid #e74c3c;
+      transition: transform 0.3s ease;
     }
-    .announcement-card.unread {
-      background: #ffe0b2;
-      font-weight: 500;
-      box-shadow: 0 4px 12px rgba(255, 112, 67, 0.2);
+    .announcement.unread {
+      background: #fce4d6;
+      box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
     }
-    .announcement-card.read {
-      background: #fff3e0;
-    }
-    .announcement-card:hover {
+    .announcement:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
-    .announcement-card h4 {
+    .announcement h4 {
       margin: 0 0 12px;
-      color: #00695c;
+      color: #2c3e50;
       font-size: 18px;
     }
-    .announcement-card p {
+    .announcement p {
       margin: 8px 0;
       font-size: 15px;
     }
-    .announcement-card .mark-read {
-      background: #ff7043;
-      color: #fff;
+    .announcement .mark-read {
+      background: #e74c3c;
+      color: #ffffff;
       border: none;
       padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
       font-weight: 600;
-      transition: background 0.3s ease, transform 0.3s ease;
+      transition: background 0.3s ease;
       margin-top: 12px;
     }
-    .announcement-card .mark-read:hover {
-      background: #f4511e;
-      transform: scale(1.1);
+    .announcement .mark-read:hover {
+      background: #c0392b;
     }
     button {
-      padding: 14px 28px;
-      background: linear-gradient(135deg, #ffd700, #ffca28);
-      color: #004d40;
+      padding: 12px 24px;
+      background: #1abc9c;
+      color: #ffffff;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
       font-weight: 600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 8px;
     }
     button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      background: #16a085;
+      transform: scale(1.05);
     }
     .error-message {
-      color: #d32f2f;
+      color: #e74c3c;
       font-size: 15px;
       margin: 16px;
       padding: 12px;
-      background: #ffebee;
+      background: #fee4e2;
       border-radius: 6px;
       text-align: center;
       animation: fadeIn 0.5s ease-in;
     }
     .payment-center {
       text-align: center;
-      padding: 20px;
-      background: #fffde7;
+      padding: 24px;
+      background: #f0f4f8;
       border-radius: 12px;
-      border: 2px dashed #ffca28;
+      border: 2px solid #1abc9c;
       margin-bottom: 16px;
-      transition: transform 0.3s ease;
-    }
-    .payment-center:hover {
-      transform: translateY(-5px);
     }
     .payment-center h1 {
       font-size: 24px;
-      color: #ff7043;
+      color: #e74c3c;
       margin-bottom: 16px;
     }
     .payment-assurance {
@@ -289,40 +309,40 @@
     .payment-assurance li {
       margin: 12px 0;
       font-size: 16px;
-      color: #00695c;
+      color: #2c3e50;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
     }
     .payment-assurance li i {
-      color: #4caf50;
-      margin-right: 10px;
+      color: #27ae60;
       font-size: 18px;
     }
     .online-dot {
       width: 10px;
       height: 10px;
-      background: #00ff00;
+      background: #27ae60;
       border-radius: 50%;
       display: inline-block;
       margin-left: 8px;
-      box-shadow: 0 0 8px #00ff00;
+      box-shadow: 0 0 8px #27ae60;
       animation: pulse 1.5s infinite;
     }
     .profile-info p {
       margin: 12px 0;
+      font-size: 16px;
       display: flex;
       align-items: center;
-      font-size: 16px;
+      gap: 8px;
     }
     .profile-info i {
-      margin-right: 10px;
-      color: #ff7043;
+      color: #e74c3c;
       font-size: 18px;
     }
     .progress-bar {
       width: 100%;
-      background-color: #e0e0e0;
+      background: #dfe6e9;
       border-radius: 8px;
       margin: 16px 0;
       overflow: hidden;
@@ -330,9 +350,9 @@
     .progress {
       height: 24px;
       border-radius: 8px;
-      background: linear-gradient(135deg, #ffd700, #ffca28);
+      background: #3498db;
       text-align: center;
-      color: #004d40;
+      color: #ffffff;
       line-height: 24px;
       font-size: 14px;
       font-weight: 600;
@@ -343,13 +363,13 @@
       padding: 12px;
       font-size: 16px;
       border-radius: 8px;
-      border: 1px solid #d1d9e0;
+      border: 1px solid #dfe6e9;
       width: 100%;
       max-width: 300px;
       transition: border-color 0.3s ease;
     }
     .term-select:focus {
-      border-color: #ff7043;
+      border-color: #e74c3c;
       outline: none;
     }
     .announcements-nav {
@@ -359,34 +379,30 @@
       flex-wrap: wrap;
     }
     .announcements-nav button {
-      background: #ffd700;
+      background: #3498db;
       padding: 10px 20px;
       font-size: 15px;
       border-radius: 8px;
-      color: #004d40;
-      transition: transform 0.3s ease, background 0.3s ease;
+      color: #ffffff;
     }
     .announcements-nav button.active {
-      background: #ff7043;
-      color: #fff;
+      background: #e74c3c;
     }
     .announcements-nav button:hover {
-      background: #ffca28;
-      transform: scale(1.05);
+      background: #2980b9;
     }
     .bottom-nav {
       display: none;
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: #ffd700;
+      background: #000000;
       padding: 12px 0;
       box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
       z-index: 1000;
-      transition: transform 0.3s ease;
     }
     .bottom-nav.active {
-      transform: translateY(0);
+      display: block;
     }
     .bottom-nav .nav-items {
       display: flex;
@@ -394,7 +410,7 @@
       align-items: center;
     }
     .bottom-nav a, .bottom-nav button {
-      color: #004d40;
+      color: #ffffff;
       background: none;
       border: none;
       font-size: 14px;
@@ -402,11 +418,10 @@
       text-align: center;
       padding: 8px;
       cursor: pointer;
-      transition: transform 0.3s ease, color 0.3s ease;
+      transition: color 0.3s ease;
     }
     .bottom-nav a:hover, .bottom-nav button:hover {
-      transform: scale(1.1);
-      color: #ff7043;
+      color: #ecf0f1;
     }
     .bottom-nav i {
       display: block;
@@ -414,66 +429,32 @@
       margin-bottom: 4px;
     }
     footer {
-      background: #004d40;
-      color: #fff;
+      background: #2c3e50;
+      color: #ffffff;
       text-align: center;
       padding: 12px 0;
       font-size: 14px;
-      z-index: 999;
     }
     footer p {
       margin: 4px 0;
     }
     footer a {
-      color: #ffd700;
+      color: #1abc9c;
       text-decoration: none;
     }
     footer a:hover {
       text-decoration: underline;
     }
-    .helb-card {
-      background: #e6f3f2;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-      border-left: 4px solid #ffd700;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .helb-card:hover {
-      transform: translateY(-5px);
-    }
     .coming-soon {
-      background: #fffde7;
+      background: #f0f4f8;
       padding: 20px;
       border-radius: 12px;
       margin-bottom: 16px;
-      border: 2px dashed #ffd700;
+      border: 2px dashed #1abc9c;
       text-align: center;
-      color: #ff7043;
+      color: #e74c3c;
       font-style: italic;
       font-size: 18px;
-      transition: transform 0.3s ease;
-    }
-    .coming-soon:hover {
-      transform: translateY(-5px);
-    }
-    .fees-world {
-      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffd700" fill-opacity="0.2" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,90.7C960,96,1056,96,1152,85.3C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E'), #fff;
-      background-size: cover;
-      padding: 25px;
-      border-radius: 15px;
-      margin-bottom: 16px;
-      border: 2px solid #ffd700;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .fees-world:hover {
-      transform: translateY(-5px);
-    }
-    .fees-world h2 {
-      color: #004d40;
-      font-size: 20px;
     }
     .loader {
       position: fixed;
@@ -482,7 +463,7 @@
       transform: translate(-50%, -50%);
       display: none;
       border: 8px solid #f3f3f3;
-      border-top: 8px solid #ff7043;
+      border-top: 8px solid #e74c3c;
       border-radius: 50%;
       width: 60px;
       height: 60px;
@@ -494,9 +475,9 @@
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
     @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 5px #00ff00; }
-      50% { transform: scale(1.2); box-shadow: 0 0 12px #00ff00; }
-      100% { transform: scale(1); box-shadow: 0 0 5px #00ff00; }
+      0% { transform: scale(1); box-shadow: 0 0 5px #27ae60; }
+      50% { transform: scale(1.2); box-shadow: 0 0 12px #27ae60; }
+      100% { transform: scale(1); box-shadow: 0 0 5px #27ae60; }
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -508,28 +489,20 @@
     }
     @media (max-width: 768px) {
       .main-content {
-        padding: 80px 12px 90px;
-        margin: 0;
+        padding: 16px;
       }
       .sidebar {
         display: none;
       }
       .bottom-nav {
         display: block;
-        transform: translateY(100%);
-      }
-      .bottom-nav.active {
-        transform: translateY(0);
       }
       .section {
         margin: 12px;
         padding: 16px;
       }
-      table {
-        font-size: 14px;
-      }
-      th, td {
-        padding: 10px;
+      .slider img {
+        height: 200px;
       }
       .header h1 {
         font-size: 20px;
@@ -542,48 +515,52 @@
         font-size: 15px;
         padding: 10px 16px;
       }
+      .profile-info, .payment-center, .announcement {
+        background: #ecf0f1;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
     }
     @media (min-width: 769px) {
       .sidebar {
         display: block;
-        width: 250px;
+        width: 280px;
         height: calc(100vh - 60px);
         position: fixed;
         top: 60px;
         left: 0;
-        background: linear-gradient(to bottom, #ffd700, #ffca28);
-        padding: 20px 0;
+        background: #2980b9;
+        padding: 24px;
         z-index: 900;
-        transition: transform 0.3s ease;
       }
       .sidebar .profile {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
       .sidebar .profile img {
-        width: 80px;
-        height: 80px;
+        width: 90px;
+        height: 90px;
         border-radius: 50%;
-        border: 3px solid #004d40;
-        transition: transform 0.3s ease;
+        border: 3px solid #ffffff;
       }
       .sidebar .profile img:hover {
         transform: scale(1.1);
       }
       .sidebar .profile p {
-        color: #004d40;
+        color: #ffffff;
         font-size: 18px;
         font-weight: 600;
         margin: 8px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
       }
       .main-content {
-        margin-left: 250px;
+        margin-left: 280px;
       }
-      .announcement-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      .profile-info, .payment-center, .announcement {
+        padding: 20px;
+        margin-bottom: 16px;
       }
     }
   </style>
@@ -600,41 +577,60 @@
         <a href="#" onclick="showSection('payFees', hideMenu())">Pay Fees</a>
         <a href="#" onclick="showSection('announcements', hideMenu())">Announcements</a>
         <a href="#" onclick="showSection('timetables', hideMenu())">Timetables</a>
+        <a href="#" onclick="showSection('resources', hideMenu())">Resources</a>
         <button onclick="logout()">Logout</button>
       </div>
     </div>
     <div class="sidebar">
       <div class="profile">
-        <img src="https://img.icons8.com/color/80/000000/student-male.png" alt="Student Icon">
-        <p id="studentName"></p><span class="online-dot"></span>
+        <img src="https://img.icons8.com/color/90/000000/student-female.png" alt="Student Icon">
+        <p id="studentName"></p>
+        <p id="studentYear"></p>
+        <p>Diploma in Primary Teacher Education</p>
+        <p id="sidebarQuote" style="font-style: italic; color: #e74c3c; font-size: 14px;"></p>
       </div>
     </div>
     <div class="main-content">
-      <div class="quote">
-        <h2>Daily Quote</h2>
-        <p id="dailyQuote">"Education is the key to unlocking the world, a passport to freedom." - Finley Onchiri</p>
+      <div class="slider">
+        <div class="slider-text" id="sliderText1">Diploma in Primary Teacher Education</div>
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1470&auto=format&fit=crop" alt="Campus Life" class="active">
+        <div class="slider-text" id="sliderText2">Diploma in Primary Teacher Education</div>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1470&auto=format&fit=crop" alt="Classroom">
+        <div class="slider-text" id="sliderText3">Diploma in Primary Teacher Education</div>
+        <img src="https://images.unsplash.com/photo-1546410531-6c8bdecb5661?q=80&w=1470&auto=format&fit=crop" alt="Library">
       </div>
       <div id="profile" class="section active">
         <h1>Profile</h1>
-        <div class="card profile-info">
+        <div class="profile-info">
           <p><i class="fas fa-id-card"></i> Admission Number: <strong id="regNo"></strong></p>
-          <p><i class="fas fa-user"></i> Name: <strong id="name">N/A</strong></p>
-          <p><i class="fas fa-calendar"></i> Year: <strong id="year">N/A</strong></p>
-          <p><i class="fas fa-stream"></i> Stream: <strong id="stream">N/A</strong></p>
-          <p><i class="fas fa-venus-mars"></i> Gender: <strong id="gender">N/A</strong></p>
-          <p><i class="fas fa-hand-holding-usd"></i> Sponsor: <strong id="sponsor">N/A</strong></p>
-          <p><i class="fas fa-users"></i> Parent Name: <strong id="parentName">N/A</strong></p>
-          <p><i class="fas fa-phone"></i> Parent Phone: <strong id="parentPhone">N/A</strong></p>
+          <p><i class="fas fa-user"></i> Name: <strong id="name"></strong></p>
+          <p><i class="fas fa-calendar"></i> Year: <strong id="year">Year in Progress</strong></p>
+          <p><i class="fas fa-stream"></i> Stream: <strong id="stream">Stream Details</strong></p>
+          <p><i class="fas fa-venus-mars"></i> Gender: <strong id="gender">To Be Updated</strong></p>
+          <p><i class="fas fa-hand-holding-usd"></i> Sponsor: <strong id="sponsor">Sponsor Info</strong></p>
+          <p><i class="fas fa-users"></i> Parent Name: <strong id="parentName">Parent Details</strong></p>
+          <p><i class="fas fa-phone"></i> Parent Phone: <strong id="parentPhone">Contact Pending</strong></p>
+          <p><i class="fas fa-envelope"></i> Email: <strong id="email">email@example.com</strong></p>
           <div class="progress-bar">
             <div class="progress" id="progressBar" style="width: 0%;">0% Graduation Tracker</div>
           </div>
+          <div>
+            <h2>Personal Goals</h2>
+            <p>Set your academic and career goals here. Contact your mentor for guidance.</p>
+            <textarea id="goals" rows="4" placeholder="Enter your goals..."></textarea>
+            <button onclick="saveGoals()">Save Goals</button>
+          </div>
         </div>
-        <div class="helb-card">
+        <div class="fees-overview">
+          <div id="billed"><i class="fas fa-receipt"></i> Total Billed: <span id="feesTotal">Loading...</span></div>
+          <div id="paid"><i class="fas fa-check-circle"></i> Total Paid: <span id="feesPaid">Awaiting Update</span></div>
+          <div id="balance"><i class="fas fa-balance-scale"></i> Balance: <span id="feesBalance">Calculating...</span></div>
+        </div>
+        <div class="helb-info">
           <h2>Apply for HELB Now!</h2>
           <p><i class="fas fa-graduation-cap"></i> Secure financial support for your education through the Higher Education Loans Board (HELB).</p>
           <button onclick="window.open('https://www.helb.co.ke/', '_blank')"><i class="fas fa-external-link-alt"></i> Apply</button>
         </div>
-        <p><strong>Explanation:</strong> Dive into your personal details here—track your progress with the graduation bar, manage sponsorship, and explore HELB for financial aid to keep your studies on track.</p>
       </div>
       <div id="marks" class="section">
         <h1>Academics</h1>
@@ -643,7 +639,7 @@
           <option value="term2">Term 2</option>
           <option value="term3">Term 3</option>
         </select>
-        <div class="card">
+        <div>
           <table id="marksTable">
             <thead>
               <tr>
@@ -652,22 +648,21 @@
                 <th>CAT Score</th>
                 <th>Exam Score</th>
                 <th>Grade</th>
+                <th>Remarks</th>
               </tr>
             </thead>
             <tbody id="marksBody"></tbody>
           </table>
         </div>
         <button onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> Download PDF</button>
-        <p><strong>Explanation:</strong> Monitor your academic journey with detailed scores and grades, downloadable as a PDF to share with mentors or guardians.</p>
       </div>
       <div id="fees" class="section">
         <h1>Fees</h1>
-        <div class="fees-world">
-          <h2>Your Fees World</h2>
-          <p>Total: <span class="fees-highlight" id="feesTotal">N/A</span></p>
-          <p>Paid: <span class="fees-highlight" id="feesPaid">N/A</span></p>
-          <p>Balance: <span class="fees-highlight" id="feesBalance">N/A</span></p>
-          <p>Statement: <span id="feesStatement">N/A</span></p>
+        <div>
+          <p>Total: <span id="feesTotalFees">Loading...</span></p>
+          <p>Paid: <span id="feesPaidFees">Awaiting Update</span></p>
+          <p>Balance: <span id="feesBalanceFees">Calculating...</span></p>
+          <p>Statement: <span id="feesStatement">Statement in Progress</span></p>
           <table id="transactionsTable">
             <thead>
               <tr>
@@ -676,13 +671,18 @@
                 <th>Method</th>
                 <th>Payer</th>
                 <th>Transaction Code</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody id="transactionsBody"></tbody>
           </table>
           <button onclick="downloadFeePDF()"><i class="fas fa-file-pdf"></i> Download Fee PDF</button>
         </div>
-        <p><strong>Explanation:</strong> Navigate your financial landscape with a stylish overview of fees, payments, and transactions—perfect for staying ahead!</p>
+        <div class="fees-overview">
+          <div id="billed"><i class="fas fa-receipt"></i> Total Billed: <span id="feesTotalFeesDisplay">Loading...</span></div>
+          <div id="paid"><i class="fas fa-check-circle"></i> Total Paid: <span id="feesPaidFeesDisplay">Awaiting Update</span></div>
+          <div id="balance"><i class="fas fa-balance-scale"></i> Balance: <span id="feesBalanceFeesDisplay">Calculating...</span></div>
+        </div>
       </div>
       <div id="payFees" class="section">
         <h1>Pay Fees</h1>
@@ -699,7 +699,11 @@
           <button onclick="window.open('https://payment.intasend.com/pay/b90e1c19-33da-4b7d-a654-c4fb72eb9ea7/', '_blank')"><i class="fas fa-credit-card"></i> Pay Now</button>
           <p>After payment, please contact the Accounts Office to confirm receipt. For issues, visit the office for assistance.</p>
         </div>
-        <p><strong>Explanation:</strong> Pay with peace of mind using our secure portal, backed by top-notch support to resolve any hiccups.</p>
+        <div class="fees-overview">
+          <div id="billed"><i class="fas fa-receipt"></i> Total Billed: <span id="feesTotalPayFees">Loading...</span></div>
+          <div id="paid"><i class="fas fa-check-circle"></i> Total Paid: <span id="feesPaidPayFees">Awaiting Update</span></div>
+          <div id="balance"><i class="fas fa-balance-scale"></i> Balance: <span id="feesBalancePayFees">Calculating...</span></div>
+        </div>
       </div>
       <div id="announcements" class="section">
         <h1>Announcements</h1>
@@ -707,27 +711,44 @@
           <button id="generalBtn" class="active" onclick="showAnnouncements('general')">General</button>
           <button id="individualBtn" onclick="showAnnouncements('individual')">Individual</button>
         </div>
-        <div class="card">
-          <div class="announcement-grid" id="announcementsContainer"></div>
-        </div>
-        <p><strong>Explanation:</strong> Keep up with the latest news and personal updates—interactive cards make it easy to stay informed.</p>
+        <div class="announcement-grid" id="announcementsContainer"></div>
       </div>
       <div id="timetables" class="section">
         <h1>Timetables</h1>
-        <div class="coming-soon">
-          <p><i class="fas fa-clock"></i> Coming Soon! Get ready for your schedule updates!</p>
+        <div>
+          <h2>Term 1 Timetable</h2>
+          <p>Download or view your timetable for Term 1.</p>
+          <button onclick="window.open('https://example.com/timetable.pdf', '_blank')"><i class="fas fa-download"></i> Download</button>
         </div>
-        <p><strong>Explanation:</strong> Soon, plan your day with a sleek timetable view—watch this space for exciting updates!</p>
+        <div class="coming-soon">
+          <p><i class="fas fa-clock"></i> More timetables coming soon!</p>
+        </div>
+      </div>
+      <div id="resources" class="section">
+        <h1>Resources</h1>
+        <div>
+          <h2>CBC E-Learning Materials</h2>
+          <ul>
+            <li><a href="https://www.knec.ac.ke/cbc-materials" target="_blank">CBC Subject Notes</a></li>
+            <li><a href="https://www.education.go.ke/cbc-videos" target="_blank">CBC Video Lectures</a></li>
+            <li><a href="https://www.kICD.ac.ke/cbc-ebooks" target="_blank">CBC E-Books</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Library Access</h2>
+          <p>Access digital library resources and book physical copies.</p>
+          <button onclick="window.open('https://library.borabuttc.ac.ke', '_blank')"><i class="fas fa-book"></i> Visit Library</button>
+        </div>
       </div>
     </div>
-    
+    <div id="errorMessage" class="error-message"></div>
+    <div class="loader" id="loader"></div>
+    <footer>
+      <p>Contact: <a href="mailto:info@borabuttc.ac.ke">info@borabuttc.ac.ke</a> | Phone: +254 712 345 678</p>
+      <p>Address: P.O. Box 443, Nyamira, Kenya</p>
+      <p>© 2025 Borabu Teachers Training College. All rights reserved.</p>
+    </footer>
   </div>
-  <div id="errorMessage" class="error-message"></div>
-  <div class="loader" id="loader"></div>
-  <footer>
-    <p>Contact: <a href="mailto:info@borabuttc.ac.ke">info@borabuttc.ac.ke</a> | Phone: +254 712 345 678</p>
-    <p>© 2025 Borabu Teachers Training College. All rights reserved.</p>
-  </footer>
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyCi9NWfDwbWSByd_R7ueNkLcQsFlBJ5_VA",
@@ -744,6 +765,8 @@
     const db = firebase.database();
 
     let currentSection = 'profile';
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider img');
 
     function showSection(section, callback) {
       document.querySelectorAll(".section").forEach(div => div.classList.remove("active"));
@@ -753,9 +776,11 @@
       updateBottomNav();
     }
 
-    function showError(message) {
+    function showError(message, isSuccess = false) {
       const errorDiv = document.getElementById("errorMessage");
-      errorDiv.textContent = message;
+      errorDiv.textContent = message === "Permission denied" ? "Coming soon!" : message;
+      errorDiv.style.background = isSuccess ? '#d1fae5' : '#fee4e2';
+      errorDiv.style.color = isSuccess ? '#27ae60' : '#e74c3c';
       errorDiv.style.display = "block";
       setTimeout(() => { errorDiv.style.display = "none"; }, 5000);
     }
@@ -784,8 +809,7 @@
 
     function logout() {
       localStorage.clear();
-      console.log("Logged out, redirecting to index.html");
-      setTimeout(() => window.location.href = "index.html", 100);
+      window.location.href = "index.html";
     }
 
     function updateMarks() {
@@ -805,22 +829,24 @@
           if (termData) {
             hasMarks = true;
             for (const [subject, catScore] of Object.entries(termData.cat || {})) {
-              const examScore = termData.exam?.[subject] || (termData[subject] || "-");
-              const grade = termData.grades?.[subject] || termData.grades?.[subject.toLowerCase()] || "-";
+              const examScore = termData.exam?.[subject] || (termData[subject] || "Pending");
+              const grade = termData.grades?.[subject] || termData.grades?.[subject.toLowerCase()] || "TBA";
+              const remark = termData.remarks?.[subject] || "N/A";
               marksBody.innerHTML += `<tr>
                 <td>${term.replace("term", "Term ")}</td>
                 <td>${subject}</td>
-                <td>${catScore !== undefined ? catScore : "-"}</td>
-                <td>${examScore !== undefined ? examScore : "-"}</td>
+                <td>${catScore !== undefined ? catScore : "Awaiting"}</td>
+                <td>${examScore !== undefined ? examScore : "Pending"}</td>
                 <td>${grade}</td>
+                <td>${remark}</td>
               </tr>`;
             }
           }
           if (!hasMarks) {
-            marksBody.innerHTML = "<tr><td colspan='5'>No marks available for this term</td></tr>";
+            marksBody.innerHTML = "<tr><td colspan='6'>No marks recorded yet</td></tr>";
           }
         } else {
-          showError("Student data not found.");
+          showError("Student profile not found.");
         }
       }).catch((error) => {
         loader.style.display = "none";
@@ -828,7 +854,7 @@
       });
     }
 
-    function downloadPDF() {
+    async function downloadPDF() {
       const loader = document.getElementById("loader");
       loader.style.display = "block";
       const { jsPDF } = window.jspdf;
@@ -840,22 +866,23 @@
       const today = new Date().toLocaleDateString();
       const marksBody = document.getElementById("marksBody");
 
-      doc.setFontSize(16);
-      doc.setFillColor(255, 215, 0);
-      doc.rect(0, 0, 210, 30, "F");
-      doc.setTextColor(0, 77, 64);
-      doc.text("Borabu Teacher's Training College", 70, 20);
-      doc.setFontSize(10);
+      doc.setFontSize(18);
+      doc.setFillColor(52, 152, 219);
+      doc.rect(40, 0, 170, 40, "F");
+      doc.setTextColor(255, 255, 255);
+      doc.text("Borabu Teacher's Training College", 50, 20);
+      doc.text("Academic Report", 50, 30);
+      doc.setFontSize(12);
       doc.setTextColor(0, 0, 0);
-      doc.text("P.O. Box 443, Nyamira", 85, 26);
-      doc.text("Date: " + today, 150, 26);
+      doc.text("P.O. Box 443, Nyamira", 50, 45);
+      doc.text("Date: " + today, 50, 53);
 
       doc.setFontSize(12);
-      doc.text("Name: " + name, 20, 40);
-      doc.text("Reg No: " + regNo, 20, 48);
-      doc.text("Stream: " + stream, 20, 56);
-      doc.text("Year: " + year, 20, 64);
-      doc.text("Course: Diploma in Primary Education", 20, 72);
+      doc.text(`Name: ${name}`, 50, 65);
+      doc.text(`Registration Number: ${regNo}`, 50, 73);
+      doc.text(`Stream: ${stream}`, 50, 81);
+      doc.text(`Year: ${year}`, 50, 89);
+      doc.text("Course: Diploma in Primary Education", 50, 97);
 
       const rows = [];
       if (marksBody.querySelectorAll("tr").length > 0) {
@@ -864,27 +891,29 @@
           rows.push(cols);
         });
         doc.autoTable({
-          startY: 82,
-          head: [["Term", "Subject", "CAT Score", "Exam Score", "Grade"]],
+          startY: 105,
+          head: [["Term", "Subject", "CAT Score", "Exam Score", "Grade", "Remarks"]],
           body: rows,
           theme: 'grid',
           styles: { cellPadding: 3, fontSize: 10, lineColor: [0, 0, 0], lineWidth: 0.1 },
-          headStyles: { fillColor: [255, 215, 0], textColor: [0, 77, 64], fontStyle: 'bold' },
-          bodyStyles: { alternateRowStyles: { fillColor: [245, 247, 250] } },
+          headStyles: { fillColor: [52, 152, 219], textColor: [255, 255, 255], fontStyle: 'bold' },
+          bodyStyles: { alternateRowStyles: { fillColor: [236, 240, 241] } },
         });
       } else {
-        doc.text("No marks available for this term", 20, 82);
+        doc.text("No marks recorded yet", 50, 105);
       }
 
       doc.setFontSize(10);
-      doc.text("Lecturer: Mr. Mojo", 20, 280);
-      doc.text("Assistant: Mrs. Mojo", 120, 280);
+      doc.setTextColor(0, 0, 0);
+      doc.text("Registrar: Mr. Mojo", 50, 270);
+      doc.text("Signature: ___________________", 120, 270);
+      doc.text("Date: " + today, 120, 278);
 
-      doc.save(`${name.replace(/ /g, "_")}_Report.pdf`);
+      doc.save(`${name.replace(/ /g, "_")}_Academic_Report.pdf`);
       loader.style.display = "none";
     }
 
-    function downloadFeePDF() {
+    async function downloadFeePDF() {
       const loader = document.getElementById("loader");
       loader.style.display = "block";
       const { jsPDF } = window.jspdf;
@@ -892,29 +921,30 @@
       const name = document.getElementById("name").textContent;
       const regNo = document.getElementById("regNo").textContent;
       const today = new Date().toLocaleDateString();
-      const total = document.getElementById("feesTotal").textContent.replace(/,/g, "");
-      const paid = document.getElementById("feesPaid").textContent.replace(/,/g, "");
-      const balance = document.getElementById("feesBalance").textContent.replace(/,/g, "");
+      const total = document.getElementById("feesTotalFees").textContent.replace(/,/g, "");
+      const paid = document.getElementById("feesPaidFees").textContent.replace(/,/g, "");
+      const balance = document.getElementById("feesBalanceFees").textContent.replace(/,/g, "");
       const statement = document.getElementById("feesStatement").textContent;
       const transactionsBody = document.getElementById("transactionsBody");
 
-      doc.setFontSize(16);
-      doc.setFillColor(255, 215, 0);
-      doc.rect(0, 0, 210, 30, "F");
-      doc.setTextColor(0, 77, 64);
-      doc.text("Borabu Teacher's Training College", 70, 20);
-      doc.setFontSize(10);
+      doc.setFontSize(18);
+      doc.setFillColor(52, 152, 219);
+      doc.rect(40, 0, 170, 40, "F");
+      doc.setTextColor(255, 255, 255);
+      doc.text("Borabu Teacher's Training College", 50, 20);
+      doc.text("Fee Statement", 50, 30);
+      doc.setFontSize(12);
       doc.setTextColor(0, 0, 0);
-      doc.text("P.O. Box 443, Nyamira", 85, 26);
-      doc.text("Date: " + today, 150, 26);
+      doc.text("P.O. Box 443, Nyamira", 50, 45);
+      doc.text("Date: " + today, 50, 53);
 
       doc.setFontSize(12);
-      doc.text("Name: " + name, 20, 40);
-      doc.text("Reg No: " + regNo, 20, 48);
-      doc.text("Total Fees: KES " + total, 20, 56);
-      doc.text("Paid: KES " + paid, 20, 64);
-      doc.text("Balance: KES " + balance, 20, 72);
-      doc.text("Statement: " + statement, 20, 80);
+      doc.text(`Name: ${name}`, 50, 65);
+      doc.text(`Registration Number: ${regNo}`, 50, 73);
+      doc.text(`Total Fees: ${total}`, 50, 81);
+      doc.text(`Paid: ${paid}`, 50, 89);
+      doc.text(`Balance: ${balance}`, 50, 97);
+      doc.text(`Statement: ${statement}`, 50, 105);
 
       const rows = [];
       if (transactionsBody.querySelectorAll("tr").length > 0) {
@@ -923,40 +953,70 @@
           rows.push(cols);
         });
         doc.autoTable({
-          startY: 90,
-          head: [["Date", "Amount", "Method", "Payer", "Transaction Code"]],
+          startY: 115,
+          head: [["Date", "Amount", "Method", "Payer", "Transaction Code", "Status"]],
           body: rows,
           theme: 'grid',
           styles: { cellPadding: 3, fontSize: 10, lineColor: [0, 0, 0], lineWidth: 0.1 },
-          headStyles: { fillColor: [255, 215, 0], textColor: [0, 77, 64], fontStyle: 'bold' },
-          bodyStyles: { alternateRowStyles: { fillColor: [245, 247, 250] } },
+          headStyles: { fillColor: [52, 152, 219], textColor: [255, 255, 255], fontStyle: 'bold' },
+          bodyStyles: { alternateRowStyles: { fillColor: [236, 240, 241] } },
         });
       } else {
-        doc.text("No transactions available", 20, 90);
+        doc.text("No transactions recorded yet", 50, 115);
       }
 
       doc.setFontSize(10);
-      doc.text("Accounts Office", 20, 280);
-      doc.text("Contact: +254 712 345 678", 120, 280);
+      doc.setTextColor(0, 0, 0);
+      doc.text("Accounts Office", 50, 270);
+      doc.text("Signature: ___________________", 120, 270);
+      doc.text("Contact: +254 712 345 678", 120, 278);
 
-      doc.save(`${name.replace(/ /g, "_")}_Fee_Report.pdf`);
+      doc.save(`${name.replace(/ /g, "_")}_Fee_Statement.pdf`);
       loader.style.display = "none";
+    }
+
+    function updateBottomNav() {
+      const bottomNav = document.querySelector('.bottom-nav');
+      if (window.innerWidth <= 768) {
+        bottomNav.classList.add('active');
+      } else {
+        bottomNav.classList.remove('active');
+      }
+    }
+
+    function slideShow() {
+      slides[currentSlide].classList.remove('active');
+      const textElements = document.querySelectorAll('.slider-text');
+      textElements[currentSlide].style.display = 'none';
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+      textElements[currentSlide].style.display = 'block';
+    }
+
+    function saveGoals() {
+      const goals = document.getElementById("goals").value;
+      const regNo = localStorage.getItem("regNo").replace(/\//g, "_");
+      if (goals) {
+        db.ref(`users/students/${regNo}/goals`).set(goals)
+          .then(() => showError("Goals saved successfully!", true))
+          .catch(error => showError("Failed to save goals: " + error.message));
+      } else {
+        showError("Please enter your goals.");
+      }
     }
 
     window.onload = function() {
       const userType = localStorage.getItem("userType");
       const regNo = localStorage.getItem("regNo");
       const studentName = localStorage.getItem("studentName");
-      console.log("Student.html loaded, localStorage:", userType, regNo, studentName);
 
       if (userType !== "student" || !regNo) {
-        console.log("Redirecting to index.html: Invalid session");
         localStorage.clear();
         setTimeout(() => window.location.href = "index.html", 100);
         return;
       }
 
-      document.getElementById("studentName").textContent = studentName || "Student";
+      document.getElementById("studentName").textContent = studentName || "Student Profile";
       document.getElementById("regNo").textContent = regNo.replace(/_/g, "/");
 
       const loader = document.getElementById("loader");
@@ -967,17 +1027,19 @@
         if (snapshot.exists()) {
           const data = snapshot.val();
           const profile = data.profile || {};
-          document.getElementById("name").textContent = profile.name || data.name || "N/A";
-          const year = profile.year || data.form?.replace("form", "Year ") || "N/A";
+          document.getElementById("name").textContent = profile.name || data.name || "Student Name";
+          document.getElementById("email").textContent = profile.email || "email@example.com";
+          const year = profile.year || data.form?.replace("form", "Year ") || "Year in Progress";
           document.getElementById("year").textContent = year;
+          document.getElementById("studentYear").textContent = year;
           const progress = year === "Year 1" ? 25 : year === "Year 2" ? 50 : year === "Year 3" ? 75 : year === "Year 4" ? 100 : 0;
           document.getElementById("progressBar").style.width = progress + "%";
           document.getElementById("progressBar").textContent = progress + "% Graduation Tracker";
-          document.getElementById("stream").textContent = profile.stream || data.stream || "N/A";
-          document.getElementById("gender").textContent = profile.gender || data.gender || "N/A";
-          document.getElementById("sponsor").textContent = profile.sponsor || data.sponsor || "N/A";
-          document.getElementById("parentName").textContent = profile.parentName || data.parentName || "N/A";
-          document.getElementById("parentPhone").textContent = profile.parentPhone || data.parentPhone || "N/A";
+          document.getElementById("stream").textContent = profile.stream || data.stream || "Stream Details";
+          document.getElementById("gender").textContent = profile.gender || data.gender || "To Be Updated";
+          document.getElementById("sponsor").textContent = data.fees?.sponsor || "Sponsor Info";
+          document.getElementById("parentName").textContent = profile.parentName || data.parentName || "Parent Details";
+          document.getElementById("parentPhone").textContent = profile.parentPhone || data.parentPhone || "Contact Pending";
 
           const marksBody = document.getElementById("marksBody");
           marksBody.innerHTML = "";
@@ -987,19 +1049,21 @@
           if (termData) {
             hasMarks = true;
             for (const [subject, catScore] of Object.entries(termData.cat || {})) {
-              const examScore = termData.exam?.[subject] || (termData[subject] || "-");
-              const grade = termData.grades?.[subject] || termData.grades?.[subject.toLowerCase()] || "-";
+              const examScore = termData.exam?.[subject] || (termData[subject] || "Pending");
+              const grade = termData.grades?.[subject] || termData.grades?.[subject.toLowerCase()] || "TBA";
+              const remark = termData.remarks?.[subject] || "N/A";
               marksBody.innerHTML += `<tr>
                 <td>${term.replace("term", "Term ")}</td>
                 <td>${subject}</td>
-                <td>${catScore !== undefined ? catScore : "-"}</td>
-                <td>${examScore !== undefined ? examScore : "-"}</td>
+                <td>${catScore !== undefined ? catScore : "Awaiting"}</td>
+                <td>${examScore !== undefined ? examScore : "Pending"}</td>
                 <td>${grade}</td>
+                <td>${remark}</td>
               </tr>`;
             }
           }
           if (!hasMarks) {
-            marksBody.innerHTML = "<tr><td colspan='5'>No marks available for this term</td></tr>";
+            marksBody.innerHTML = "<tr><td colspan='6'>No marks recorded yet</td></tr>";
           }
 
           const feesData = data.fees || {};
@@ -1015,10 +1079,20 @@
           const balanceFromDb = feesData.balance !== undefined ? feesData.balance : null;
           const calculatedBalance = Math.max(0, total - totalPaid);
           const balance = balanceFromDb !== null ? balanceFromDb : calculatedBalance;
-          const statement = feesData.statement || "N/A";
-          document.getElementById("feesTotal").textContent = total.toLocaleString() || "N/A";
-          document.getElementById("feesPaid").textContent = totalPaid.toLocaleString() || "N/A";
-          document.getElementById("feesBalance").textContent = balance.toLocaleString() || "N/A";
+          const statement = feesData.statement || "Statement in Progress";
+
+          document.getElementById("feesTotal").textContent = total.toLocaleString();
+          document.getElementById("feesPaid").textContent = totalPaid.toLocaleString();
+          document.getElementById("feesBalance").textContent = balance.toLocaleString();
+          document.getElementById("feesTotalFees").textContent = total.toLocaleString();
+          document.getElementById("feesPaidFees").textContent = totalPaid.toLocaleString();
+          document.getElementById("feesBalanceFees").textContent = balance.toLocaleString();
+          document.getElementById("feesTotalFeesDisplay").textContent = total.toLocaleString();
+          document.getElementById("feesPaidFeesDisplay").textContent = totalPaid.toLocaleString();
+          document.getElementById("feesBalanceFeesDisplay").textContent = balance.toLocaleString();
+          document.getElementById("feesTotalPayFees").textContent = total.toLocaleString();
+          document.getElementById("feesPaidPayFees").textContent = totalPaid.toLocaleString();
+          document.getElementById("feesBalancePayFees").textContent = balance.toLocaleString();
           document.getElementById("feesStatement").textContent = statement;
 
           const transactionsBody = document.getElementById("transactionsBody");
@@ -1026,33 +1100,35 @@
           if (Array.isArray(transactions)) {
             transactions.forEach(tx => {
               transactionsBody.innerHTML += `<tr>
-                <td>${tx.date || "-"}</td>
+                <td>${tx.date || "Date TBD"}</td>
                 <td>${tx.amount || "0"}</td>
-                <td>${tx.method || "-"}</td>
-                <td>${tx.payer || "-"}</td>
-                <td>${tx.transactionCode || tx.mpesaCode || "-"}</td>
+                <td>${tx.method || "Method TBD"}</td>
+                <td>${tx.payer || "Payer TBD"}</td>
+                <td>${tx.transactionCode || tx.mpesaCode || "Code TBD"}</td>
+                <td>${tx.amount ? "Complete" : "Pending"}</td>
               </tr>`;
             });
           } else if (typeof transactions === "object") {
             Object.values(transactions).forEach(tx => {
               transactionsBody.innerHTML += `<tr>
-                <td>${tx.date || "-"}</td>
+                <td>${tx.date || "Date TBD"}</td>
                 <td>${tx.amount || "0"}</td>
-                <td>${tx.method || "-"}</td>
-                <td>${tx.payer || "-"}</td>
-                <td>${tx.transactionCode || tx.mpesaCode || "-"}</td>
+                <td>${tx.method || "Method TBD"}</td>
+                <td>${tx.payer || "Payer TBD"}</td>
+                <td>${tx.transactionCode || tx.mpesaCode || "Code TBD"}</td>
+                <td>${tx.amount ? "Complete" : "Pending"}</td>
               </tr>`;
             });
           }
+          document.getElementById("goals").value = data.goals || "";
         } else {
-          showError("Student data not found.");
+          showError("Student profile not found.");
           localStorage.clear();
           setTimeout(() => window.location.href = "index.html", 100);
         }
       }).catch((error) => {
         loader.style.display = "none";
         showError("Failed to load data: " + error.message);
-        console.log("Error loading student data:", error);
         localStorage.clear();
         setTimeout(() => window.location.href = "index.html", 100);
       });
@@ -1101,7 +1177,6 @@
           });
         }, (error) => {
           showError("Failed to load announcements: " + error.message);
-          console.log("Error loading announcements:", error);
         });
       }
 
@@ -1110,7 +1185,7 @@
         announcements.sort((a, b) => new Date(b.date) - new Date(a.date));
         announcements.forEach(ann => {
           const div = document.createElement("div");
-          div.className = `announcement-card ${ann.isRead ? "read" : "unread"}`;
+          div.className = `announcement ${ann.isRead ? "read" : "unread"}`;
           div.innerHTML = `
             <h4>${ann.title || ann.text || ann.message} (${new Date(ann.date).toLocaleDateString()})</h4>
             <p>${ann.message || ann.text}</p>
@@ -1126,7 +1201,7 @@
         const regNo = localStorage.getItem("regNo").replace(/\//g, "_");
         const readRef = db.ref(`users/students/${regNo}/readAnnouncements/${key}`);
         readRef.set(true).then(() => {
-          showError("Announcement marked as read!", false);
+          showError("Announcement marked as read!", true);
           updateAnnouncements(type);
         }).catch(error => {
           showError("Failed to mark announcement as read: " + error.message);
@@ -1147,24 +1222,22 @@
         updateAnnouncements(type);
       };
 
-      function updateBottomNav() {
-        const bottomNav = document.querySelector('.bottom-nav');
-        if (window.innerWidth <= 768) {
-          bottomNav.classList.add('active');
-        }
-      }
       updateBottomNav();
       window.addEventListener('resize', updateBottomNav);
-
       const quotes = [
         '"Education is the key to unlocking the world, a passport to freedom." - Finley Onchiri',
         '"The future belongs to those who believe in the beauty of their dreams." - Eleanor Roosevelt',
         '"Learn as if you will live forever, live as if you will die tomorrow." - Mahatma Gandhi'
       ];
       let quoteIndex = 0;
-      setInterval(() => {
+      function updateQuotes() {
+        document.getElementById("sidebarQuote").textContent = quotes[quoteIndex];
         quoteIndex = (quoteIndex + 1) % quotes.length;
-        document.getElementById("dailyQuote").textContent = quotes[quoteIndex];
+      }
+      updateQuotes();
+      setInterval(() => {
+        slideShow();
+        updateQuotes();
       }, 5000);
     };
   </script>
