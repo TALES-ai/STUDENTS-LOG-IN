@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Student Portal - Borabu TTC</title>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
@@ -31,6 +31,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      width: 100%;
     }
     .header {
       background: #000000;
@@ -98,6 +99,8 @@
       flex: 1;
       padding: 24px;
       overflow-y: auto;
+      width: 100%;
+      max-width: 100%;
     }
     .slider {
       position: relative;
@@ -112,12 +115,15 @@
       width: 100%;
       height: 300px;
       object-fit: cover;
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
       transition: opacity 0.5s ease;
     }
     .slider img.active {
-      display: block;
       opacity: 1;
+      position: relative;
     }
     .slider .slider-text {
       position: absolute;
@@ -128,6 +134,10 @@
       padding: 10px 15px;
       border-radius: 5px;
       font-size: 16px;
+      display: none;
+    }
+    .slider .slider-text.active {
+      display: block;
     }
     .fees-overview {
       display: flex;
@@ -177,6 +187,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       margin-bottom: 24px;
       animation: fadeIn 0.5s ease-in;
+      width: 100%;
     }
     .section.active {
       display: block;
@@ -221,6 +232,8 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 16px;
       margin-top: 16px;
+      width: 100%;
+      max-width: 100%;
     }
     .announcement {
       background: #fef9e7;
@@ -228,6 +241,8 @@
       border-radius: 12px;
       border-left: 4px solid #e74c3c;
       transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 100%;
     }
     .announcement.unread {
       background: #fce4d6;
@@ -295,6 +310,7 @@
       border-radius: 12px;
       border: 2px solid #1abc9c;
       margin-bottom: 16px;
+      width: 100%;
     }
     .payment-center h1 {
       font-size: 24px;
@@ -434,6 +450,7 @@
       text-align: center;
       padding: 12px 0;
       font-size: 14px;
+      width: 100%;
     }
     footer p {
       margin: 4px 0;
@@ -470,6 +487,62 @@
       animation: spin 1s linear infinite;
       z-index: 2000;
     }
+    .helb-info {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #f9f9ff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      width: 100%;
+    }
+    .helb-info img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      filter: brightness(0.8);
+    }
+    .helb-info .content {
+      padding: 1.5rem;
+    }
+    .helb-info h2 {
+      color: #3d3d5c;
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+    .helb-info p {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .helb-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.2rem;
+    }
+    .helb-info ul li {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .helb-info ul li i {
+      color: #0d6efd;
+      margin-right: 8px;
+    }
+    .helb-info button {
+      background: #0d6efd;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+    .helb-info button:hover {
+      background: #084298;
+    }
     @keyframes spin {
       0% { transform: translate(-50%, -50%) rotate(0deg); }
       100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -488,8 +561,12 @@
       to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+      }
       .main-content {
         padding: 16px;
+        margin-left: 0;
       }
       .sidebar {
         display: none;
@@ -498,7 +575,7 @@
         display: block;
       }
       .section {
-        margin: 12px;
+        margin: 12px 0;
         padding: 16px;
       }
       .slider img {
@@ -517,10 +594,17 @@
       }
       .profile-info, .payment-center, .announcement {
         background: #ecf0f1;
-        padding: 20px;
+        padding: 16px;
         border-radius: 12px;
         margin-bottom: 16px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+      }
+      .announcement-grid {
+        grid-template-columns: 1fr;
+      }
+      .helb-info {
+        margin: 1rem 0;
       }
     }
     @media (min-width: 769px) {
@@ -557,6 +641,7 @@
       }
       .main-content {
         margin-left: 280px;
+        width: calc(100% - 280px);
       }
       .profile-info, .payment-center, .announcement {
         padding: 20px;
@@ -587,17 +672,17 @@
         <p id="studentName"></p>
         <p id="studentYear"></p>
         <p>Diploma in Primary Teacher Education</p>
-        <p id="sidebarQuote" style="font-style: italic; color: #e74c3c; font-size: 14px;"></p>
+        <p id="sidebarQuote" style="font-style: italic; color: #ffffff; font-size: 14px; min-height: 40px;"></p>
       </div>
     </div>
     <div class="main-content">
       <div class="slider">
-        <div class="slider-text" id="sliderText1">Diploma in Primary Teacher Education</div>
         <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1470&auto=format&fit=crop" alt="Campus Life" class="active">
-        <div class="slider-text" id="sliderText2">Diploma in Primary Teacher Education</div>
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1470&auto=format&fit=crop" alt="Classroom">
+        <img src="https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg" alt="Library">
+        <div class="slider-text active" id="sliderText1">Diploma in Primary Teacher Education</div>
+        <div class="slider-text" id="sliderText2">Diploma in Primary Teacher Education</div>
         <div class="slider-text" id="sliderText3">Diploma in Primary Teacher Education</div>
-        <img src="https://images.unsplash.com/photo-1546410531-6c8bdecb5661?q=80&w=1470&auto=format&fit=crop" alt="Library">
       </div>
       <div id="profile" class="section active">
         <h1>Profile</h1>
@@ -617,7 +702,7 @@
           <div>
             <h2>Personal Goals</h2>
             <p>Set your academic and career goals here. Contact your mentor for guidance.</p>
-            <textarea id="goals" rows="4" placeholder="Enter your goals..."></textarea>
+            <textarea id="goals" rows="4" placeholder="Enter your goals..." style="width: 100%;"></textarea>
             <button onclick="saveGoals()">Save Goals</button>
           </div>
         </div>
@@ -626,89 +711,21 @@
           <div id="paid"><i class="fas fa-check-circle"></i> Total Paid: <span id="feesPaid">Awaiting Update</span></div>
           <div id="balance"><i class="fas fa-balance-scale"></i> Balance: <span id="feesBalance">Calculating...</span></div>
         </div>
-       <style>
-  .helb-info {
-    max-width: 600px;
-    margin: 2rem auto;
-    background: #f9f9ff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  .helb-info img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    filter: brightness(0.8);
-  }
-
-  .helb-info .content {
-    padding: 1.5rem;
-  }
-
-  .helb-info h2 {
-    color: #3d3d5c;
-    margin-bottom: 0.5rem;
-    font-size: 1.8rem;
-  }
-
-  .helb-info p {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .helb-info ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.2rem;
-  }
-
-  .helb-info ul li {
-    margin: 0.5rem 0;
-    font-size: 0.95rem;
-    color: #444;
-  }
-
-  .helb-info ul li i {
-    color: #0d6efd;
-    margin-right: 8px;
-  }
-
-  .helb-info button {
-    background: #0d6efd;
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: 0.3s ease;
-  }
-
-  .helb-info button:hover {
-    background: #084298;
-  }
-</style>
-
-<div class="helb-info">
-  <img src="https://www.rongovarsity.ac.ke/wp-content/uploads/2024/05/HELB-logo-Functions-1.jpg" alt="HELB Banner">
-  <div class="content">
-    <h2><i class="fas fa-graduation-cap"></i> Apply for HELB Now</h2>
-    <p>Need help financing your college or university education? The Higher Education Loans Board (HELB) has got you covered!</p>
-    <ul>
-      <li><i class="fas fa-check-circle"></i> Tuition and upkeep support</li>
-      <li><i class="fas fa-check-circle"></i> Accessible to all Kenyan students</li>
-      <li><i class="fas fa-check-circle"></i> Easy online application process</li>
-    </ul>
-    <button onclick="window.open('https://www.helb.co.ke/', '_blank')">
-      <i class="fas fa-external-link-alt"></i> Visit HELB Website
-    </button>
-  </div>
-</div>
-
+        <div class="helb-info">
+          <img src="https://cdn.tuko.co.ke/images/1120/0f23a45325cbbc9d.jpeg?v=1" alt="HELB Banner">
+          <div class="content">
+            <h2><i class="fas fa-graduation-cap"></i> Apply for HELB Now</h2>
+            <p>Need help financing your college or university education? The Higher Education Loans Board (HELB) has got you covered!</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Tuition and upkeep support</li>
+              <li><i class="fas fa-check-circle"></i> Accessible to all Kenyan students</li>
+              <li><i class="fas fa-check-circle"></i> Easy online application process</li>
+            </ul>
+            <button onclick="window.open('https://www.helb.co.ke/', '_blank')">
+              <i class="fas fa-external-link-alt"></i> Visit HELB Website
+            </button>
+          </div>
+        </div>
       </div>
       <div id="marks" class="section">
         <h1>Academics</h1>
@@ -821,6 +838,15 @@
     </div>
     <div id="errorMessage" class="error-message"></div>
     <div class="loader" id="loader"></div>
+    <div class="bottom-nav">
+      <div class="nav-items">
+        <a href="#" onclick="showSection('profile', hideMenu())"><i class="fas fa-user"></i> Profile</a>
+        <a href="#" onclick="showSection('marks', hideMenu())"><i class="fas fa-book"></i> Academics</a>
+        <a href="#" onclick="showSection('fees', hideMenu())"><i class="fas fa-money-bill"></i> Fees</a>
+        <a href="#" onclick="showSection('payFees', hideMenu())"><i class="fas fa-credit-card"></i> Pay</a>
+        <a href="#" onclick="showSection('announcements', hideMenu())"><i class="fas fa-bullhorn"></i> Notices</a>
+      </div>
+    </div>
     <footer>
       <p>Contact: <a href="mailto:info@borabuttc.ac.ke">info@borabuttc.ac.ke</a> | Phone: +254 712 345 678</p>
       <p>Address: P.O. Box 443, Nyamira, Kenya</p>
@@ -845,6 +871,7 @@
     let currentSection = 'profile';
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slider img');
+    const slideTexts = document.querySelectorAll('.slider .slider-text');
 
     function showSection(section, callback) {
       document.querySelectorAll(".section").forEach(div => div.classList.remove("active"));
@@ -1063,12 +1090,12 @@
     }
 
     function slideShow() {
+      if (slides.length === 0 || slideTexts.length === 0) return;
       slides[currentSlide].classList.remove('active');
-      const textElements = document.querySelectorAll('.slider-text');
-      textElements[currentSlide].style.display = 'none';
+      slideTexts[currentSlide].classList.remove('active');
       currentSlide = (currentSlide + 1) % slides.length;
       slides[currentSlide].classList.add('active');
-      textElements[currentSlide].style.display = 'block';
+      slideTexts[currentSlide].classList.add('active');
     }
 
     function saveGoals() {
