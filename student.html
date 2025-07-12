@@ -626,11 +626,89 @@
           <div id="paid"><i class="fas fa-check-circle"></i> Total Paid: <span id="feesPaid">Awaiting Update</span></div>
           <div id="balance"><i class="fas fa-balance-scale"></i> Balance: <span id="feesBalance">Calculating...</span></div>
         </div>
-        <div class="helb-info">
-          <h2>Apply for HELB Now!</h2>
-          <p><i class="fas fa-graduation-cap"></i> Secure financial support for your education through the Higher Education Loans Board (HELB).</p>
-          <button onclick="window.open('https://www.helb.co.ke/', '_blank')"><i class="fas fa-external-link-alt"></i> Apply</button>
-        </div>
+       <style>
+  .helb-info {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #f9f9ff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .helb-info img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: brightness(0.8);
+  }
+
+  .helb-info .content {
+    padding: 1.5rem;
+  }
+
+  .helb-info h2 {
+    color: #3d3d5c;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+  }
+
+  .helb-info p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .helb-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.2rem;
+  }
+
+  .helb-info ul li {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #444;
+  }
+
+  .helb-info ul li i {
+    color: #0d6efd;
+    margin-right: 8px;
+  }
+
+  .helb-info button {
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s ease;
+  }
+
+  .helb-info button:hover {
+    background: #084298;
+  }
+</style>
+
+<div class="helb-info">
+  <img src="https://www.rongovarsity.ac.ke/wp-content/uploads/2024/05/HELB-logo-Functions-1.jpg" alt="HELB Banner">
+  <div class="content">
+    <h2><i class="fas fa-graduation-cap"></i> Apply for HELB Now</h2>
+    <p>Need help financing your college or university education? The Higher Education Loans Board (HELB) has got you covered!</p>
+    <ul>
+      <li><i class="fas fa-check-circle"></i> Tuition and upkeep support</li>
+      <li><i class="fas fa-check-circle"></i> Accessible to all Kenyan students</li>
+      <li><i class="fas fa-check-circle"></i> Easy online application process</li>
+    </ul>
+    <button onclick="window.open('https://www.helb.co.ke/', '_blank')">
+      <i class="fas fa-external-link-alt"></i> Visit HELB Website
+    </button>
+  </div>
+</div>
+
       </div>
       <div id="marks" class="section">
         <h1>Academics</h1>
